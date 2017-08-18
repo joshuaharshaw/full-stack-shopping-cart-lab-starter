@@ -6,8 +6,8 @@ app.service("cartService", function($http) {
     // entire response object.)
     this.getAllItems = function() {
         // GET /api/items
-
-        // TODO Make the HTTP request to the server and return a promise.
+       var promise = $http.get("/api/items");
+       return promise;
     };
 
     // Call the Node Server API to add an item.
@@ -20,6 +20,8 @@ app.service("cartService", function($http) {
         // body -> { product: "...", price: ... }
 
         // TODO Make the HTTP request to the server and return a promise.
+        var promise = $http.post("/api/items", item);
+        return promise;
     };
 
     // Call the Node Server API to delete an item.
@@ -27,9 +29,8 @@ app.service("cartService", function($http) {
     // Return a promise that resolves when the request finishes. It doesn't
     // matter what the value of the promise is.
     this.deleteItem = function(itemId) {
-        // DELETE /api/items/{ID}
-
-        // TODO Make the HTTP request to the server and return a promise.
+        var promise = $http.delete("/api/items/" + itemId);
+        return promise;
     };
 
 });
